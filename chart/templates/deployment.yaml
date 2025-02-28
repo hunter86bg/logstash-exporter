@@ -89,6 +89,9 @@ spec:
 
       containers:
       - name: exporter
+        args:
+        - "--config"
+        - "/app/config.yml"
         env:
         - name: EXPORTER_CONFIG_LOCATION
           value: /app/config.yml
@@ -139,6 +142,3 @@ spec:
       - name: config-volume
         configMap:
           name: {{ include "logstash-exporter.name" . }}
-      args:
-      - "--config"
-      - "/app/config.yml"
